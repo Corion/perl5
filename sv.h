@@ -157,10 +157,10 @@ typedef enum {
  * tables are in perl.h.  There are also two affected names tables in dump.c,
  * one in B.xs, and 'bodies_by_type[]' in sv.c.
  *
- * The bits that match 0xf0 are CURRENTLY UNUSED, except that 0xFF means a
- * freed SV.  The bits above that are for flags, like SVf_IOK */
+ * The bits that match 0xe0 are CURRENTLY UNUSED
+ * The bits above that are for flags, like SVf_IOK */
 
-#define SVt_MASK 0xf	/* smallest bitmask that covers all types */
+#define SVt_MASK 0x1f	/* smallest bitmask that covers all types */
 
 #ifndef PERL_CORE
 /* Fast Boyer Moore tables are now stored in magic attached to PVMGs */
