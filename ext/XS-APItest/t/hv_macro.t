@@ -16,11 +16,11 @@ for my $test (
     my ($str,$want16,$want32,$want64)= @$test;
     my $input= join " ", map { sprintf "%02x", ord($_) } split //, $str;
     my $hex16= sprintf "0x%04x",XS::APItest::HvMacro::u8_to_u16_le($str);
-    is($hex16,$want16,"U8TO16_LE works as expected (".substr($input,0,4+1).")");
+    is($hex16,$want16,"U8TO16_LE works as expected (hex bytes:".substr($input,0,4+1).")");
     my $hex32= sprintf "0x%08x",XS::APItest::HvMacro::u8_to_u32_le($str);
-    is($hex32,$want32,"U8TO32_LE works as expected (".substr($input,0,8+3).")");
+    is($hex32,$want32,"U8TO32_LE works as expected (hex bytes:".substr($input,0,8+3).")");
     my $hex64= sprintf "0x%016x",XS::APItest::HvMacro::u8_to_u64_le($str);
-    is($hex64,$want64,"U8TO64_LE works as expected (".substr($input,0,16+7).")");
+    is($hex64,$want64,"U8TO64_LE works as expected (hex bytes:".substr($input,0,16+7).")");
 }
 done_testing();
 
