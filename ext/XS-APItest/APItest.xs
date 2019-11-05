@@ -6858,3 +6858,43 @@ Comctl32Version()
 #endif
 
 
+MODULE = XS::APItest		PACKAGE = XS::APItest::HvMacro
+
+
+U16
+u8_to_u16_le(SV *sv)
+    CODE:
+    {
+        STRLEN len;
+        char *pv= SvPV(sv,len);
+        if (len<2) croak("string must be at least 2 bytes long");
+        RETVAL= U8TO16_LE(pv);
+    }
+    OUTPUT:
+        RETVAL
+
+U32
+u8_to_u32_le(SV *sv)
+    CODE:
+    {
+        STRLEN len;
+        char *pv= SvPV(sv,len);
+        if (len<4)
+            croak("string must be at least 4 bytes long");
+        RETVAL= U8TO32_LE(pv);
+    }
+    OUTPUT:
+        RETVAL
+
+UV
+u8_to_u64_le(SV *sv)
+    CODE:
+    {
+        STRLEN len;
+        char *pv= SvPV(sv,len);
+        if (len<8) croak("string must be at least 8 bytes long");
+        RETVAL= U8TO64_LE(pv);
+    }
+    OUTPUT:
+        RETVAL
+
