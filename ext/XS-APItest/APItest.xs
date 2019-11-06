@@ -6898,3 +6898,39 @@ u8_to_u64_le(SV *sv)
     OUTPUT:
         RETVAL
 
+U32
+rotl32(U32 n, U8 r)
+    CODE:
+    {
+        RETVAL= ROTL32(n,r);
+    }
+    OUTPUT:
+        RETVAL
+
+U32
+rotr32(U32 n, U8 r)
+    CODE:
+    {
+        RETVAL= ROTR32(n,r);
+    }
+    OUTPUT:
+        RETVAL
+
+UV
+rotl64(UV n, U8 r)
+    CODE:
+    {
+        RETVAL= ROTL64(n,r);
+    }
+    OUTPUT:
+        RETVAL
+
+UV
+rotr64(UV n, U8 r)
+    CODE:
+    {
+        RETVAL= ROTR64(n,r);
+    }
+    OUTPUT:
+        RETVAL
+
