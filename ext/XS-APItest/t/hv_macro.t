@@ -164,5 +164,12 @@ isnt( "@$seq_l32", "@$seq_r32",
     "rotl32(n,1) and rotr32(n,1) return different results" );
 isnt( "@$seq_l64", "@$seq_r64",
     "rotl64(n,1) and rotr64(n,1) return different results" );
+my $seed= "perlgoodgoodperl";
+my $state= XS::APItest::HvMacro::siphash_seed_state($seed);
+my $hash= XS::APItest::HvMacro::siphash24($state,"Larry wall is BDFL");
+my $failed= XS::APItest::HvMacro::test_siphash24();
+is($failed,0,"siphash24 test vectors check");
+my $failed= XS::APItest::HvMacro::test_siphash13();
+is($failed,0,"siphash13 test vectors check");
 done_testing();
 
