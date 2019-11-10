@@ -3,29 +3,29 @@ environment:
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
-    CCTYPE: MSVC90
+    CCTYPE: MSVC120
     MAKE: nmake
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
-    CCTYPE: MSVC90
+    CCTYPE: MSVC140
     MAKE: nmake
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
-    CCTYPE: MSVC90
+    CCTYPE: MSVC120
     MAKE: nmake
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
-    CCTYPE: MSVC90
+    CCTYPE: MSVC140
     MAKE: nmake
-  - TARGET: x86_64-pc-windows-gnu
-    MSYS_BITS: 64
-    MAKE: gmake
-  - TARGET: i686-pc-windows-gnu
-    MSYS_BITS: 32
-    MAKE: gmake
+  #- TARGET: x86_64-pc-windows-gnu
+  #  MSYS_BITS: 64
+  #  MAKE: gmake
+  #- TARGET: i686-pc-windows-gnu
+  #  MSYS_BITS: 32
+  #  MAKE: gmake
 
 clone_depth: 10
 
@@ -37,9 +37,7 @@ install:
 build: true
 
 build_script:
-    - "echo %PATH%"
-    - "echo %MAKE%"
-    - "path %PATH%;C:\\Perl\\c\\bin && cd win32 && %MAKE%"
+    - "cd win32 && %MAKE%"
 
 test_script:
   - "%MAKE% test"
