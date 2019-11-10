@@ -8,28 +8,28 @@ environment:
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC120
-    MAKE: nmake
+    MYMAKE: nmake
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC140
-    MAKE: nmake
+    MYMAKE: nmake
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC120
-    MAKE: nmake
+    MYMAKE: nmake
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC140
-    MAKE: nmake
+    MYMAKE: nmake
   #- TARGET: x86_64-pc-windows-gnu
   #  MSYS_BITS: 64
-  #  MAKE: gmake
+  #  MYMAKE: gmake
   #- TARGET: i686-pc-windows-gnu
   #  MSYS_BITS: 32
-  #  MAKE: gmake
+  #  MYMAKE: gmake
 
 clone_depth: 10
 
@@ -49,7 +49,7 @@ install:
 build: true
 
 build_script:
-    - "cd win32 && %MAKE% CCTYPE=%CCTYPE%"
+    - "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC%"
 
 test_script:
-  - "%MAKE% test"
+  - "%MYMAKE% test"
