@@ -37,7 +37,7 @@ install:
 build: true
 
 build_script:
-    - "cd win32 && %MAKE%"
+    - "cd win32 && %MAKE% CCTYPE=%CCTYPE%"
 
 test_script:
   - "%MAKE% test"
