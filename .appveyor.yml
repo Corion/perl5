@@ -10,32 +10,38 @@ environment:
     CCTYPE: GCC
     CC: gcc.exe
     PATH_PREPEND: C:\msys64\usr\bin;
-    MYMAKE: make -f GNUmakefile
+    MYMAKE: make
     DEBUG_CMD: gcc --version
+    CONFIGURE: sh ./Configure
+    BUILD: "%MYMAKE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC120
     CC: clcache.exe
     MYMAKE: nmake
+    BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC140
     CC: clcache.exe
     MYMAKE: nmake
+    BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.1\\VC\\vcvarsall.bat"
     CCTYPE: MSVC141
     CC: clcache.exe
     MYMAKE: nmake
+    BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.2\\VC\\vcvarsall.bat"
     CCTYPE: MSVC142
     CC: clcache.exe
     MYMAKE: nmake
+    BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
@@ -43,6 +49,7 @@ environment:
     CC: clcache.exe
     MYMAKE: nmake
     DEFINE: WIN64=undef
+    BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
@@ -50,6 +57,7 @@ environment:
     CC: clcache.exe
     MYMAKE: nmake
     DEFINE: WIN64=undef
+    BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   #- TARGET: x86_64-pc-windows-gnu
   #  MSYS_BITS: 64
   #  MYMAKE: gmake
@@ -89,7 +97,8 @@ build_script:
     - "echo %DEBUG_CMD%"
     - "%DEBUG_CMD%"
     - "echo %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
-    - "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
+    - "if not "%CONFIGURE%x" == "x" %CONFIGURE%
+    - "if not "%BUILD%x" == "x" %BUILD%
 
 test_script:
   - "%MYMAKE% test"
