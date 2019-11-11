@@ -19,11 +19,13 @@ environment:
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC120
     MYMAKE: nmake
+    DEFINE: WIN64=undef
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC140
     MYMAKE: nmake
+    DEFINE: WIN64=undef
   #- TARGET: x86_64-pc-windows-gnu
   #  MSYS_BITS: 64
   #  MYMAKE: gmake
@@ -49,7 +51,7 @@ install:
 build: true
 
 build_script:
-    - "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC%"
+    - "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
 
 test_script:
   - "%MYMAKE% test"
