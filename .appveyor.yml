@@ -51,6 +51,7 @@ install:
 build: true
 
 build_script:
+    - "echo %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
     - "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
 
 test_script:
