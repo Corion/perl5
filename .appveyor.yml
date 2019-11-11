@@ -11,6 +11,7 @@ environment:
     CC: gcc.exe
     PATH_PREPEND: C:\msys64\usr\bin;
     MYMAKE: make -f GNUmakefile
+    DEBUG_CMD: gcc --version
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
@@ -83,9 +84,11 @@ install:
 build: true
 
 build_script:
-    - "echo %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
     - path %PATH_PREPEND%%PATH%
-    - "echo \"%PATH%\""
+    - "echo %PATH%"
+    - "echo %DEBUG_CMD%"
+    - "%DEBUG_CMD%"
+    - "echo %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
     - "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
 
 test_script:
