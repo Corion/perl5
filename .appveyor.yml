@@ -14,6 +14,16 @@ environment:
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC140
     MYMAKE: nmake
+  - TARGET: x86_64-pc-windows-msvc
+    ARCH: amd64
+    VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.1\\VC\\vcvarsall.bat"
+    CCTYPE: MSVC141
+    MYMAKE: nmake
+  - TARGET: x86_64-pc-windows-msvc
+    ARCH: amd64
+    VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.2\\VC\\vcvarsall.bat"
+    CCTYPE: MSVC142
+    MYMAKE: nmake
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
@@ -32,6 +42,8 @@ environment:
   #- TARGET: i686-pc-windows-gnu
   #  MSYS_BITS: 32
   #  MYMAKE: gmake
+  # Cygwin
+  # gcc
 
 clone_depth: 10
 
@@ -45,6 +57,13 @@ init:
   - set APPVEYOR_SAVE_CACHE_ON_ERROR=true
   - set CC=clcache
   - cd /d C:/projects/perl5
+  - dir /b /s c:\Perl
+  - dir /b /s C:\cygwin64
+  - dir /b /s C:\cygwin
+  - dir /b /s C:\msys64
+  - "dir /b /s \"C:\Program Files\LLVM\bin\""
+  # Check the installed AppVeyor Perl
+  - perl -V
 
 install:
 
