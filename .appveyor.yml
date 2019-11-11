@@ -12,7 +12,7 @@ environment:
     PATH_PREPEND: C:\msys64\usr\bin;
     MYMAKE: make
     DEBUG_CMD: gcc --version
-    CONFIGURE: sh ./Configure
+    CONFIGURE: sh ./Configure -des -Dusedevel
     BUILD: "%MYMAKE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
