@@ -97,8 +97,8 @@ build_script:
     - "echo %DEBUG_CMD%"
     - "%DEBUG_CMD%"
     - "echo %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
-    - "if not "%CONFIGURE%x" == "x" %CONFIGURE%
-    - "if not "%BUILD%x" == "x" %BUILD%
+    - "if not \"%CONFIGURE%x\" == \"x\" %CONFIGURE%"
+    - "if not \"%BUILD%x\" == \"x\" %BUILD%"
 
 test_script:
   - "%MYMAKE% test"
