@@ -62,7 +62,7 @@ init:
   - dir /b /s C:\cygwin
   #- dir /b /s C:\msys64
   # C:\\msys64\\usr\\bin
-  - "dir /b /s \"C:\\Program Files\\LLVM\\bin\\""
+  - "dir /b /s \"C:\\Program Files\\LLVM\\bin\""
   # Check the installed AppVeyor Perl
   - perl -V
 
