@@ -4,36 +4,48 @@ cache:
 
 environment:
   matrix:
+  - TARGET: x86_64-windows-cygwin
+    ARCH: amd64
+    VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
+    CCTYPE: GCC
+    CC: gcc.exe
+    MYMAKE: make
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC120
+    CC: clcache.exe
     MYMAKE: nmake
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC140
+    CC: clcache.exe
     MYMAKE: nmake
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.1\\VC\\vcvarsall.bat"
     CCTYPE: MSVC141
+    CC: clcache.exe
     MYMAKE: nmake
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.2\\VC\\vcvarsall.bat"
     CCTYPE: MSVC142
+    CC: clcache.exe
     MYMAKE: nmake
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 12.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC120
+    CC: clcache.exe
     MYMAKE: nmake
     DEFINE: WIN64=undef
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
     VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
     CCTYPE: MSVC140
+    CC: clcache.exe
     MYMAKE: nmake
     DEFINE: WIN64=undef
   #- TARGET: x86_64-pc-windows-gnu
@@ -57,14 +69,14 @@ init:
   - set APPVEYOR_SAVE_CACHE_ON_ERROR=true
   - set CC=clcache
   - cd /d C:/projects/perl5
-  - dir /b /s c:\Perl
-  - dir /b /s C:\cygwin64
-  - dir /b /s C:\cygwin
+  #- dir /b /s c:\Perl
+  #- dir /b /s C:\cygwin64
+  #- dir /b /s C:\cygwin
   #- dir /b /s C:\msys64
   # C:\\msys64\\usr\\bin
   - "dir /b /s \"C:\\Program Files\\LLVM\\bin\""
   # Check the installed AppVeyor Perl
-  - perl -V
+  #- perl -V
 
 install:
 
