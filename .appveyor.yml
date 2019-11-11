@@ -68,7 +68,6 @@ init:
   - pip install clcache
   - set CLCACHE_MSBUILD_CONF=/p:TrackFileAccess=false /p:CLToolExe=clcache.exe /p:CLToolPath=C:\Python35-x64\Scripts
   - set APPVEYOR_SAVE_CACHE_ON_ERROR=true
-  - set CC=clcache
   - cd /d C:/projects/perl5
   #- dir /b /s c:\Perl
   #- dir /b /s C:\cygwin64
