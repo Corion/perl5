@@ -2836,6 +2836,7 @@ echo " "
 case "$lns" in
 *"ln"*" -s")
 	echo "Checking how to test for symbolic links..." >&4
+	$touch blurfl
 	$lns blurfl sym
 	if $test "X$issymlink" = X; then
 		case "$newsh" in
