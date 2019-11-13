@@ -12,6 +12,7 @@ environment:
     PATH_PREPEND: C:\msys64\usr\bin;
     MYMAKE: make
     DEBUG_CMD: echo %CYGWIN%
+    CYGWIN: "winsymlinks:lnk"
     CONFIGURE: sh ./Configure -des -Dusedevel
     BUILD: "%MYMAKE%"
   - TARGET: x86_64-pc-windows-msvc
