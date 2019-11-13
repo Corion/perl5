@@ -2836,12 +2836,13 @@ echo " "
 case "$lns" in
 *"ln"*" -s")
 	echo "Checking how to test for symbolic links..." >&4
-	$touch blurfl
+    set -x
 	$lns blurfl sym
+	ls -l sym
 	if $test "X$issymlink" = X; then
 		case "$newsh" in
-		'') sh     -c "PATH= test -h sym" >/dev/null 2>&1 ;;
-		*)  $newsh -c "PATH= test -h sym" >/dev/null 2>&1 ;;
+		'') sh     -c "PATH= test -h sym" ;; #>/dev/null 2>&1 ;;
+		*)  $newsh -c "PATH= test -h sym" ;; #>/dev/null 2>&1 ;;
 		esac
 		if test $? = 0; then
 			issymlink="test -h"
