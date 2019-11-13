@@ -2837,6 +2837,7 @@ case "$lns" in
 *"ln"*" -s")
 	echo "Checking how to test for symbolic links..." >&4
     set -x
+	$touch blurfl
 	$lns blurfl sym
 	ls -l sym
 	if $test "X$issymlink" = X; then
