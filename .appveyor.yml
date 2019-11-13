@@ -11,7 +11,7 @@ environment:
     CC: gcc.exe
     PATH_PREPEND: C:\msys64\usr\bin;
     MYMAKE: make
-    DEBUG_CMD: gcc --version
+    DEBUG_CMD: echo %CYGWIN%
     CONFIGURE: sh ./Configure -des -Dusedevel
     BUILD: "%MYMAKE%"
   - TARGET: x86_64-pc-windows-msvc
