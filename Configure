@@ -2839,7 +2839,7 @@ case "$lns" in
     set -x
 	$touch blurfl
 	$lns blurfl sym
-	$ls -l blurfl sym
+	cat `$ls -l blurfl sym`
 	if $test "X$issymlink" = X; then
 		case "$newsh" in
 		'') sh     -c "PATH= test -h sym" ;; #>/dev/null 2>&1 ;;
