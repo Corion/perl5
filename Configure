@@ -17029,6 +17029,7 @@ elif $test "X$d_readlink" = Xdefine; then
         : NetBSD first as /proc/self is a symlink to /proc/curproc,
         : and it feels more tidy to avoid an extra level of symlink
 	set NetBSD /proc/curproc/exe Linux /proc/self/exe FreeBSD /proc/curproc/file Solaris /proc/self/path/a.out
+    set -x
 	while test $# -gt 0; do
 	    type=$1; try=$2
 	    shift; shift
