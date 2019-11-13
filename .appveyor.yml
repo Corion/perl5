@@ -20,6 +20,7 @@ environment:
     CCTYPE: MSVC120
     CC: clcache.exe
     MYMAKE: nmake
+    CONFIGURE: echo .
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
@@ -27,6 +28,7 @@ environment:
     CCTYPE: MSVC140
     CC: clcache.exe
     MYMAKE: nmake
+    CONFIGURE: echo .
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
@@ -34,6 +36,7 @@ environment:
     CCTYPE: MSVC141
     CC: clcache.exe
     MYMAKE: nmake
+    CONFIGURE: echo .
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
@@ -41,6 +44,7 @@ environment:
     CCTYPE: MSVC142
     CC: clcache.exe
     MYMAKE: nmake
+    CONFIGURE: echo .
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
@@ -49,6 +53,7 @@ environment:
     CC: clcache.exe
     MYMAKE: nmake
     DEFINE: WIN64=undef
+    CONFIGURE: echo .
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: i686-pc-windows-msvc
     ARCH: x86
@@ -57,6 +62,7 @@ environment:
     CC: clcache.exe
     MYMAKE: nmake
     DEFINE: WIN64=undef
+    CONFIGURE: echo .
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   #- TARGET: x86_64-pc-windows-gnu
   #  MSYS_BITS: 64
@@ -97,8 +103,8 @@ build_script:
     - "echo %DEBUG_CMD%"
     - "%DEBUG_CMD%"
     - "echo %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
-    - "if not \"%CONFIGURE%x\" == \"x\" %CONFIGURE%"
-    - "if not \"%BUILD%x\" == \"x\" %BUILD%"
+    - "%CONFIGURE%"
+    - "%BUILD%"
 
 test_script:
   - "%MYMAKE% test"
