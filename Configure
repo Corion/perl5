@@ -17020,6 +17020,7 @@ eval $inlibc
 : if we have readlink.
 : AmigaOS will attempt to mount proc: aka /proc, if /proc/... is
 : referenced, and AmigaOS does not have a proc filesystem anyway.
+echo "\$issymlink is '$issymlink'"
 echo " "
 val="$undef"
 if $test "X$d_procselfexe" = Xundef; then
