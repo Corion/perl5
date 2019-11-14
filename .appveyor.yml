@@ -6,7 +6,7 @@ environment:
   matrix:
   - TARGET: x86_64-windows-msys64
     ARCH: amd64
-    VS: echo .
+    VS: echo
     CCTYPE: GCC
     CC: gcc.exe
     PATH_PREPEND: C:\msys64\usr\bin;
@@ -21,7 +21,7 @@ environment:
     CCTYPE: MSVC120
     CC: clcache.exe
     MYMAKE: nmake
-    CONFIGURE: echo .
+    CONFIGURE: echo.
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
@@ -29,7 +29,7 @@ environment:
     CCTYPE: MSVC140
     CC: clcache.exe
     MYMAKE: nmake
-    CONFIGURE: echo .
+    CONFIGURE: echo.
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
