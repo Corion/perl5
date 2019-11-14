@@ -22,7 +22,7 @@ environment:
     CC: clcache.exe
     MYMAKE: nmake
     CONFIGURE: echo.
-    DEFINE: ""
+    DEFINE: "FOO=bar"
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
@@ -31,7 +31,7 @@ environment:
     CC: clcache.exe
     MYMAKE: nmake
     CONFIGURE: echo.
-    DEFINE: ""
+    DEFINE: "-Dcc=gcc"
     BUILD: "cd win32 && %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
   - TARGET: x86_64-pc-windows-msvc
     ARCH: amd64
@@ -110,7 +110,7 @@ build_script:
     - "echo %CONFIGURE%"
     - "%CONFIGURE%"
     - "ls -altr"
-    - "echo %BUILD%"
+    - "echo \"%BUILD%\""
     - "%BUILD%"
 
 test_script:
