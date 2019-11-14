@@ -6,7 +6,7 @@ environment:
   matrix:
   - TARGET: x86_64-windows-msys64
     ARCH: amd64
-    VS: "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\vcvarsall.bat"
+    VS: echo .
     CCTYPE: GCC
     CC: gcc.exe
     PATH_PREPEND: C:\msys64\usr\bin;
@@ -103,8 +103,10 @@ build_script:
     - "echo %PATH%"
     - "echo %DEBUG_CMD%"
     - "%DEBUG_CMD%"
-    - "echo %MYMAKE% CCTYPE=%CCTYPE% CC=%CC% %DEFINE%"
+    - "echo %CONFIGURE%"
     - "%CONFIGURE%"
+    - "ls -altr"
+    - "echo %BUILD%"
     - "%BUILD%"
 
 test_script:
