@@ -1,0 +1,30 @@
+name: windows
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+
+jobs:
+  perl:
+
+    runs-on: windows-latest
+
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@master
+      - name: Set up Perl build environment
+        run: |
+          choco install strawberryperl
+          echo "##[add-path]C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin"
+      - name: perl -V
+        run: perl -V
+      - name: Build
+        run: |
+            cd win32
+            gmake -j4 test_prep
+      - name: Run Tests
+        run: gmake -j4 test_harness
