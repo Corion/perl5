@@ -144,7 +144,11 @@ my $TEST = 'TEST';
     delete @ENV{@MoreEnv};
     $ENV{TERM} = 'dumb';
 
+     SKIP: {
+        skip "Needed DLLs couldn't be verified", 1
+            if $Is_MSWin32 and $Config{cc} ne 'cl';
     is(eval { `$echo 1` }, "1\n");
+    }
 
     SKIP: {
         skip "Environment tainting tests skipped", 4
@@ -1189,6 +1193,10 @@ SKIP: {
 	exit 1;
     };
     close $fh or die "Can't close $arg: $!";
+    # Again, only a Perl compiled with MSVC has its DLLs readily available.
+    # All others need to find them on the path.
+    skip "Needed DLLs couldn't be verified", 1
+        if( $Is_MSWin32 and $Config{cc} ne 'cl' );
     print `$Invoke_Perl "-T" $arg and some suspect arguments`;
     is($?, 0, "Exited with status $?");
     unlink $arg;
@@ -1207,7 +1215,9 @@ SKIP: {
 }
 
 # Output of commands should be tainted
-{
+SKIP: {
+    skip "Needed DLLs couldn't be verified", 1
+        if( $Is_MSWin32 and $Config{cc} ne 'cl' );
     my $foo = `$echo abc`;
     is_tainted($foo);
 }
