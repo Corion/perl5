@@ -24,6 +24,17 @@ jobs:
       - name: Set up MSVC100
         run: |
           choco install vcexpress2010
+      - name: Install clcache
+        shell: cmd
+        run: |
+          curl -L https://github.com/frerich/clcache/releases/download/v4.2.0/clcache.4.2.0.nupkg --output clcache.4.2.0.nupkg
+          choco install clcache --source=.
+      - name: C compiler cache
+        id: clcache
+        uses: actions/cache@v1
+        with:
+          path: $HOME\clcache
+          key: ${{ runner.os }}-msvc100-x86
       - name: Help
         shell: cmd
         run: |
