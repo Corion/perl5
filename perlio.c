@@ -53,6 +53,10 @@
 #  include <rms.h>
 #endif
 
+#if defined(PERL_MICRO)
+#  include <fcntl.h>
+#endif
+
 #define PerlIO_lockcnt(f) (((PerlIOl*)(f))->head->flags)
 
 /* Call the callback or PerlIOBase, and return failure. */

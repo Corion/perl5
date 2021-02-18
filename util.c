@@ -37,6 +37,10 @@
 #endif
 #endif
 
+#ifdef PERL_MICRO
+#  include <fcntl.h>
+#endif
+
 #include <math.h>
 #include <stdlib.h>
 
