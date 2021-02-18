@@ -2782,7 +2782,13 @@ Perl_my_popen_list(pTHX_ const char *mode, int n, SV **args)
 }
 
     /* VMS' my_popen() is in VMS.c, same with OS/2 and AmigaOS 4. */
-#if (!defined(DOSISH) || defined(HAS_FORK)) && !defined(VMS) && !defined(__LIBCATAMOUNT__) && !defined(__amigaos4__)
+#if defined(MINI_PERL)
+PerlIO *
+Perl_my_popen(pTHX_ const char *cmd, const char *mode)
+{
+    return NULL;
+}
+#elif (!defined(DOSISH) || defined(HAS_FORK)) && !defined(VMS) && !defined(__LIBCATAMOUNT__) && !defined(__amigaos4__)
 PerlIO *
 Perl_my_popen(pTHX_ const char *cmd, const char *mode)
 {
