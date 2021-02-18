@@ -2808,10 +2808,12 @@ Perl_my_popen(pTHX_ const char *cmd, const char *mode)
         taint_env();
         taint_proper("Insecure %s%s", "EXEC");
     }
+    #ifndef PERL_MICRO
     if (PerlProc_pipe_cloexec(p) < 0)
         return NULL;
     if (doexec && PerlProc_pipe_cloexec(pp) >= 0)
         did_pipes = 1;
+    #endif
     while ((pid = PerlProc_fork()) < 0) {
         if (errno != EAGAIN) {
             PerlLIO_close(p[This]);

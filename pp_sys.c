@@ -4363,9 +4363,10 @@ PP(pp_system)
 #ifdef HAS_SIGPROCMASK
         sigset_t newset, oldset;
 #endif
-
+#ifndef PERL_MICRO
         if (PerlProc_pipe_cloexec(pp) >= 0)
             did_pipes = 1;
+#endif
 #ifdef __amigaos4__
         amigaos_fork_set_userdata(aTHX_
                                   &userdata,
