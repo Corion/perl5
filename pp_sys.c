@@ -4396,7 +4396,9 @@ PP(pp_system)
 #endif
                 RETURN;
             }
+#ifndef PERL_MICRO
             sleep(5);
+#endif
         }
         child_success = childpid > 0;
 #endif
@@ -4844,7 +4846,11 @@ PP(pp_sleep)
 
     (void)time(&lasttime);
     if (MAXARG < 1 || (!TOPs && !POPs))
+#if defined( PERL_MICRO )
+        1;
+#else
         PerlProc_pause();
+#endif
     else {
         const I32 duration = POPi;
         if (duration < 0) {
