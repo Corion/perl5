@@ -2666,11 +2666,13 @@ Perl_my_popen_list(pTHX_ const char *mode, int n, SV **args)
         taint_env();
         taint_proper("Insecure %s%s", "EXEC");
     }
+    #ifndef PERL_MICRO
     if (PerlProc_pipe_cloexec(p) < 0)
         return NULL;
     /* Try for another pipe pair for error return */
     if (PerlProc_pipe_cloexec(pp) >= 0)
         did_pipes = 1;
+    #endif
     while ((pid = PerlProc_fork()) < 0) {
         if (errno != EAGAIN) {
             PerlLIO_close(p[This]);
