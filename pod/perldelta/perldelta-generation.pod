@@ -1,0 +1,17 @@
+=head1 Internal Changes
+
+=over 4
+
+=item *
+
+Generate parts of C<pod/perldelta.pod> from fragments
+
+To avoid merge conflicts when merging long-running branches with
+changes to C<pod/perldelta.pod>, it is now possible to write the
+changes to C<pod/perldelta.pod> as fragments in files below the
+directory C<pod/perldelta/>.
+
+When creating a Perl release, these changes will be read and
+merged into the C<pod/perldelta.pod> file.
+
+=back
